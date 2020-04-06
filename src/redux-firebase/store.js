@@ -1,4 +1,4 @@
-import  {createStore,combineReducers} from 'redux'
+/* import  {createStore,combineReducers} from 'redux'
 import  cakeReducer from './cake/reducer'
 
 const reducers=combineReducers({
@@ -7,6 +7,6 @@ const reducers=combineReducers({
 
 const storeApp=createStore(reducers)
 
-export default storeApp
+export default storeApp */
 
 

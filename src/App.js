@@ -1,27 +1,25 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { buyCake } from './redux/cake/action';
+import { Switch, Route } from 'react-router-dom'
+import { Navbar } from './components/Navbar';
 
-function App(props) {
-    console.log(props.numOfCake)
-  return (
-    <div className="App">
-          <h1>El numero que hay de pasteles en el alamacen es: {props.numOfCake}  </h1>
-          <button onClick={()=>{props.buyCake(5)}}>Comprar cake</button>
-    </div>
-  );
+import SingUp from './pages/SingUp';
+import SignIn from './pages/SignIn';
+import Home from './pages/Home';
+
+
+
+
+export default function App() {
+
+    return (
+        <div className="App">
+            <Navbar />
+            <Switch>
+                <Route path='/SingIn' component={SignIn} />
+                <Route path='/SingUp' component={SingUp} />
+                <Route path='/' component={Home} />
+
+            </Switch>
+        </div>
+    )
 }
-
-function mapStateToProps(state) {
-    return {
-        numOfCake:state.cake.numOfCake
-    }
-}
-
-function mapDispatchToProps(dispatch){
-    return{
-        buyCake:(num)=>dispatch( buyCake(num))
-    }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(App);
