@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar';
 
 import SingUp from './pages/SingUp';
 import SignIn from './pages/SignIn';
+import CreateProject from './pages/CreateProject';
 import Home from './pages/Home';
 
 
@@ -17,7 +18,9 @@ export default function App() {
             <Switch>
                 <Route path='/SingIn' component={SignIn} />
                 <Route path='/SingUp' component={SingUp} />
+                <Route path='/CreateProject' component={CreateProject} />
                 <Route path='/' component={Home} />
+
 
             </Switch>
         </div>

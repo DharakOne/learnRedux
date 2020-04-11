@@ -20,6 +20,8 @@ export function Navbar() {
                 <li> <Link className='navLink' to='/' >Home</Link> </li>
                 <li> <Link className='navLink' to='/SingUp' >SingUp</Link> </li>
                 <li> <Link className='navLink' to='/SingIn' >SingIn</Link> </li>
+                <li> <Link className='navLink' to='/CreateProject' >CreateProject</Link> </li>
+
                 <li> <a className='navLink' onClick={SignOut} >SingOut</a> </li>
 
             </ul>

@@ -4,16 +4,24 @@ import { auth } from '../redux-firebase/configFirebase'
 export default function SingUp() {
 
     const [state, setState] = useState(
-        { email: ''
-        , password: '' })
+        {
+            email: ''
+            , password: ''
+        })
 
     function createUser(e) {
         e.preventDefault()
 
         auth().createUserWithEmailAndPassword(state.email, state.password)
-            .then(()=>(console.log('The register is succed')))
-            .catch(error=>console.log('The register is failed',error))
-        setState({email:'',password:''})
+            .then((result) => {
+                if (result.user) {
+                    result.user.updateProfile({displayName:"dragonai"})
+                    .then(e=>{console.log("finalizado")})
+                }
+                console.log('The register is succed')
+            })
+            .catch(error => console.log('The register is failed', error))
+        setState({ email: '', password: '' })
 
     }
     function handlechangevalue(e) {
@@ -23,8 +31,8 @@ export default function SingUp() {
     }
     return (
         <div className='Register' >
-            <h2 style ={{display:'block'}}>Register</h2>
-            <form   onSubmit={createUser} action="">
+            <h2 style={{ display: 'block' }}>Register</h2>
+            <form onSubmit={createUser} action="">
                 <h4>Email</h4>
                 <input type="text" name="email" id="email"
                     placeholder="please write your email"
@@ -35,7 +43,7 @@ export default function SingUp() {
                     placeholder="please write your password"
                     onChange={handlechangevalue}
                     value={state.password} />
-                <button  type="submit" style={{ display: 'block', marginTop: '15px' }}>Submit </button>
+                <button type="submit" style={{ display: 'block', marginTop: '15px' }}>Submit </button>
             </form>
         </div>
     )
